@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="wonderful world" content="student registration site">
+    <title>Wonderful World School</title>
+    <link rel="stylesheet" href="decora.css">
+
+</head>
+
+<body>
+    <div class="Pdiv">
+        <H1 align="center"><strong><u>حساب مؤشر كتلة الجسم</u></strong></H1>
+        <div class="name1">
+            <H2 align="center" dir="rtl">الوزن: <input style="text-align: center; font-weight: bold; width: 150px;"
+                    placeholder="بالكيلو جرام" id="weight" type="number"></H2>
+        </div>
+        <br>
+        <div class="name1">
+            <H2 align="center" dir="rtl">الطول: <input style="text-align: center; font-weight: bold; width: 151px;"
+                    placeholder="سـم" id="tallness" type="number"></H2>
+        </div>
+        <br><br>
+        <br>
+        <div class="name1">
+            <button class="btn" id="cal">إحسب</button>
+        </div>
+        <br><br>
+        <br><br>
+        <br>
+        <div class="name1">
+            <h2 dir="rtl" style="margin-left: -100px;" id="resul"></h2>
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+    document.getElementById("cal").addEventListener("click", function () {
+    try{
+            var weight = Number(document.getElementById("weight").value)
+            var tall = Number(document.getElementById("tallness").value)
+            var bmi = ((weight / (tall * tall)) * 10000).toFixed(1)
+            document.getElementById("resul").innerHTML = "النتيجة هي: <span class='res' id='bmi'>" + bmi + "</span> ، يبدو أن لديك <span class='res' id='status'></span>"
+
+            var status = ""        
+      
+            switch (true) {
+                case bmi < 18:
+                    status = "نحافة"
+                    break
+                case bmi >= 18 && bmi <= 24.9:
+                    status = "وزن مثالي"
+                    break
+                case bmi >= 25 && bmi <= 29.9:
+                    status = "وزن زائد"
+                    break
+                case bmi >= 30 && bmi <= 34.9:
+                    status = "سمنة درجة أولى"
+                    break
+                case bmi >= 35 && bmi <= 39.9:
+                    status = "سمنة درجة ثانية"
+                    break
+                case bmi >= 40 && bmi <= 65:
+                    status = "سمنة خطيرة"
+                    break
+
+                default:
+                    document.getElementById("resul").innerHTML = "إدخال خاطئ ، يرجى اعادة المحاولة من جديد."                
+
+            }
+            document.getElementById("status").innerHTML = status      
+       }
+
+   catch{
+   document.getElementById("resul").innerHTML = "إدخال خاطئ ، يرجى اعادة المحاولة من جديد."
+   }
+
+})
+
+
+
+
+
+</script>
+
+
+
+</html>
